@@ -1,2 +1,2 @@
 # ITMO-DataViz
-test sublime git
+Репозиторий для работ по визуализации данных
