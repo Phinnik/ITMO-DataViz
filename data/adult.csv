@@ -1,4 +1,4 @@
-"age","workclass","fnlwgt","education","education.num","marital.status","occupation","relationship","race","sex","capital.gain","capital.loss","hours.per.week","native.country","income"
+"age","workclass","fnlwgt","education","education_num","marital_status","occupation","relationship","race","sex","capital_gain","capital_loss","hours_per_week","native_country","income"
 90,"?",77053,"HS-grad",9,"Widowed","?","Not-in-family","White","Female",0,4356,40,"United-States","<=50K"
 82,"Private",132870,"HS-grad",9,"Widowed","Exec-managerial","Not-in-family","White","Female",0,4356,18,"United-States","<=50K"
 66,"?",186061,"Some-college",10,"Widowed","?","Unmarried","Black","Female",0,4356,40,"United-States","<=50K"
