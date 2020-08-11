@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adult census study</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/kube/6.5.2/css/kube.css">
+    <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Adult census study</h1>
+    <h2>Contents</h2>
+    <ul class="table-of-contents">
+        <li><a onclick="document.getElementById('sex_salary_bar').scrollIntoView()">Salary by sex</a></li>
+        <li>Education level by race</li>
+        <li>Salary by education level</li>
+        <li>Salary distribution by age</li>
+        <li>Salary by occupation</li>
+    </ul>
+
+    <h2>PLots</h2>
+<!--
+    horizontal bar plot whit two rows:
+        1) male
+        2) female
+    rows are splitted to two sections:
+        red -   bad salary
+        green - good salary
+-->
+    <div id="sex_salary_bar">
+        <svg id="sex_salary_bar_svg" height=400 width=600></svg>
+    </div>
+
+
+<!--
+    pie chart splitted by race with a break
+        splitted parts divided by education level by color
+-->
+    <div id="race_edu_pie_chart">
+        <svg id="race_edu_pie_chart_svg"></svg>
+    </div>
+
+
+
+<!--
+    2 scatter plots of salary portion by edu
+      x - edu level
+      y - salary portion
+        red - bad salary portion
+        green - good salary portion
+-->
+    <div id="edu_salary_scatter">
+        <svg id="edu_salary_scatter_svg"></svg>
+    </div>
+
+
+<!--
+    Two distplots
+        red - bad salary
+        green - good salary
+-->
+    <div id="age_gs_dist">
+        <svg id="age_gs_dist_svg"></svg>
+    </div>
+
+
+
+<!--
+    circular bar plot divided by occupation
+        bars divided by salary
+            red - bad
+            green - good
+-->
+    <div id="occupation_gs_circbar">
+        <svg id="occupation_gs_circbar_svg"></svg>
+    </div>
+
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>

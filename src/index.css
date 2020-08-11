@@ -1,0 +1,23 @@
+body {
+    font-size: 1em;
+    background-color: #EDF2F4;
+}
+
+
+
+.container {
+    margin: auto;
+    margin-top: 50px;
+    max-width: 1000px;
+    /*border: 3px dotted red;*/
+}
+
+
+svg {
+    /*border: 1px solid red;*/
+}
+
+text {
+    font-size: 1.2em;
+}
+
