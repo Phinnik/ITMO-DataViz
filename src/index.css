@@ -1,23 +1,50 @@
 body {
     font-size: 1em;
-    background-color: #EDF2F4;
+    background-color: #2e2e2e;
+    color: white;
 }
 
+h1,h2,h3,h4,h5,h6 {
+    color: white;
+}
 
+a {
+    cursor: pointer;
+    color: #dfe5b0;
+}
+a:visited {
+    color: #ecb228
+}
+a:link {
+    color: #dfe5b0;
+}
+a:hover {
+    color: #edefd4;
+}
 
 .container {
     margin: auto;
     margin-top: 50px;
-    max-width: 1000px;
+    max-width: 700px;
     /*border: 3px dotted red;*/
-}
-
-
-svg {
-    /*border: 1px solid red;*/
 }
 
 text {
     font-size: 1.2em;
+    color: white;
+    fill: white;
 }
 
+svg {
+    /*border: 1px solid red;*/
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+.race_edu_part {
+    transition: opacity 0.5s;
+}
+
+.race_edu_part:hover {
+    opacity: 50%;
+}

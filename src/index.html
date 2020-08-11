@@ -17,32 +17,21 @@
     <h2>Contents</h2>
     <ul class="table-of-contents">
         <li><a onclick="document.getElementById('sex_salary_bar').scrollIntoView()">Salary by sex</a></li>
-        <li>Education level by race</li>
+        <li><a onclick="document.getElementById('race_edu_pie_chart').scrollIntoView()">Education level by race</a></li>
         <li>Salary by education level</li>
         <li>Salary distribution by age</li>
         <li>Salary by occupation</li>
     </ul>
 
     <h2>PLots</h2>
-<!--
-    horizontal bar plot whit two rows:
-        1) male
-        2) female
-    rows are splitted to two sections:
-        red -   bad salary
-        green - good salary
--->
+
     <div id="sex_salary_bar">
         <svg id="sex_salary_bar_svg" height=400 width=600></svg>
     </div>
 
 
-<!--
-    pie chart splitted by race with a break
-        splitted parts divided by education level by color
--->
     <div id="race_edu_pie_chart">
-        <svg id="race_edu_pie_chart_svg"></svg>
+        <svg id="race_edu_pie_chart_svg" height=400 width=600></svg>
     </div>
 
 
