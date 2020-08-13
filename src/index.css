@@ -48,9 +48,16 @@ text {
 }
 
 svg {
-    border: 1px solid red;
-    margin-top: 20px;
-    margin-bottom: 100px;
+    /*border: 1px solid red;*/
+}
+
+.plot-container {
+    margin: 80px 0 180px 0;
+}
+
+.plot-container span {
+    display: block;
+    width: 500px;
 }
 
 .race_edu_part {
