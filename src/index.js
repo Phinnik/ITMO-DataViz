@@ -504,6 +504,23 @@ function drawEduSalary(data) {
 }
 
 function drawAgeGsDist(data) {
+
+    // Function to compute density
+    function kernelDensityEstimator(kernel, X) {
+        return function(V) {
+            return X.map(function(x) {
+                return [x, d3.mean(V, function(v) { return kernel(x - v); })];
+            });
+        };
+    }
+    function kernelEpanechnikov(k) {
+        return function(v) {
+            return Math.abs(v /= k) <= 1 ? 0.75 * (1 - v * v) / k : 0;
+        };
+    }
+
+
+
     const svg = d3.select('#age_gs_dist_svg');
     const svgHeight = svg.attr('height');
     const svgWidth = svg.attr('width');
@@ -513,38 +530,24 @@ function drawAgeGsDist(data) {
     const innerWidth = svgWidth - margin.left - margin.right;
 
     // data preprocessing
-    const ageGsStat = [];
-    const ageBsStat = [];
 
-    for (let i = 0; i < 100; i++) {
-        ageGsStat.push(0);
-        ageBsStat.push(0);
-    }
+    const agesGs = [];
+    const agesBs = [];
 
-
-    data.forEach(function (d) {
+    data.forEach(d => {
         if (d.income === '>50K') {
-            ageGsStat[d.age] += 1;
+            agesGs.push(+d.age);
         } else {
-            ageBsStat[d.age] += 1;
+            agesBs.push(+d.age);
         }
     })
-
-    let ageSalaryStat = [];
-    for (let i = 0; i < ageBsStat.length; i++) {
-        ageSalaryStat.push({
-            age: +i,
-            gsCount: ageGsStat[i],
-            bsCount: ageBsStat[i],
-        })
-    }
 
     const graphG = svg.append('g')
         .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
     const yScale = d3.scaleLinear()
-        .domain([0, 1])
-        .range([0, svgHeight - margin.top - margin.bottom]);
+        .domain([0, 0.04])
+        .range([svgHeight - margin.top - margin.bottom, 0]);
 
     const yAxis = graphG.append('g')
         .call(d3.axisLeft(yScale));
@@ -557,6 +560,72 @@ function drawAgeGsDist(data) {
         .call(d3.axisBottom(xScale))
         .attr('transform', `translate(0, ${svgHeight - margin.top - margin.bottom})`);
 
+    const kde = kernelDensityEstimator(kernelEpanechnikov(5), xScale.ticks(40));
 
+    const densityGs =  kde( agesGs.map(d => d) );
+    const densityBs =  kde( agesBs.map(d => d) );
+
+
+    graphG.append("path")
+        .attr("class", "mypath")
+        .datum(densityGs)
+        .attr("fill", colors.goodSalary)
+        .attr("opacity", ".8")
+        .attr("stroke", "#FFF")
+        .attr("stroke-width", 2)
+        .attr("stroke-linejoin", "round")
+        .attr("d",  d3.line()
+            .curve(d3.curveBasis)
+            .x(d => xScale(d[0]))
+            .y(d => yScale(d[1]))
+        );
+
+    graphG.append("path")
+        .attr("class", "mypath")
+        .datum(densityBs)
+        .attr("fill", colors.badSalary)
+        .attr("opacity", ".8")
+        .attr("stroke", "#FFF")
+        .attr("stroke-width", 2)
+        .attr("stroke-linejoin", "round")
+        .attr("d",  d3.line()
+            .curve(d3.curveBasis)
+            .x(d => xScale(d[0]))
+            .y(d => yScale(d[1]))
+        );
+
+    const title = svg.append('text')
+        .text('Salary density by age')
+        .attr('x', '70')
+        .attr('y', '30')
+
+    const legendG = svg.append('g')
+        .attr('transform', 'translate(450, 50)')
+
+    legendG.append('text')
+        .text('good salary')
+        .attr('transform', `translate(20, 0)`)
+        .style('font-size', '0.8em')
+
+    legendG.append('text')
+        .text('bad salary')
+        .attr('transform', `translate(20, 20)`)
+        .style('font-size', '0.8em')
+
+    legendG.append('rect')
+        .attr('fill', colors.goodSalary)
+        .attr('x', 0)
+        .attr('y', -9)
+        .attr('height', 10)
+        .attr('width', 10)
+        .style('font-size', '0.8em')
+
+    legendG.append('rect')
+        .attr('fill', colors.badSalary)
+        .attr('x', 0)
+        .attr('y', 11)
+        .attr('height', 10)
+        .attr('width', 10)
+        .style('font-size', '0.8em')
 
 }
