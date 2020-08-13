@@ -30,6 +30,7 @@ d3.csv('../data/adult.csv', function (row) {
     drawEduRace(data);
     drawEduSalary(data);
     drawAgeGsDist(data);
+    drawOccupationSalaryBubble(data);
 });
 
 function drawSexSalary(data) {
@@ -508,18 +509,20 @@ function drawAgeGsDist(data) {
 
     // Function to compute density
     function kernelDensityEstimator(kernel, X) {
-        return function(V) {
-            return X.map(function(x) {
-                return [x, d3.mean(V, function(v) { return kernel(x - v); })];
+        return function (V) {
+            return X.map(function (x) {
+                return [x, d3.mean(V, function (v) {
+                    return kernel(x - v);
+                })];
             });
         };
     }
+
     function kernelEpanechnikov(k) {
-        return function(v) {
+        return function (v) {
             return Math.abs(v /= k) <= 1 ? 0.75 * (1 - v * v) / k : 0;
         };
     }
-
 
 
     const svg = d3.select('#age_gs_dist_svg');
@@ -563,8 +566,8 @@ function drawAgeGsDist(data) {
 
     const kde = kernelDensityEstimator(kernelEpanechnikov(5), xScale.ticks(40));
 
-    const densityGs =  kde( agesGs.map(d => d) );
-    const densityBs =  kde( agesBs.map(d => d) );
+    const densityGs = kde(agesGs.map(d => d));
+    const densityBs = kde(agesBs.map(d => d));
 
 
     graphG.append("path")
@@ -575,7 +578,7 @@ function drawAgeGsDist(data) {
         .attr("stroke", "#FFF")
         .attr("stroke-width", 2)
         .attr("stroke-linejoin", "round")
-        .attr("d",  d3.line()
+        .attr("d", d3.line()
             .curve(d3.curveBasis)
             .x(d => xScale(d[0]))
             .y(d => yScale(d[1]))
@@ -589,7 +592,7 @@ function drawAgeGsDist(data) {
         .attr("stroke", "#FFF")
         .attr("stroke-width", 2)
         .attr("stroke-linejoin", "round")
-        .attr("d",  d3.line()
+        .attr("d", d3.line()
             .curve(d3.curveBasis)
             .x(d => xScale(d[0]))
             .y(d => yScale(d[1]))
@@ -628,4 +631,99 @@ function drawAgeGsDist(data) {
         .attr('height', 10)
         .attr('width', 10)
         .style('font-size', '0.8em')
+}
+
+function drawOccupationSalaryBubble(data) {
+
+    const occupationStats = [];
+
+    data.forEach(function (d) {
+        if (d.occupation !== '?') {
+            let occupationStatsIndex = -1;
+            for (let i = 0; i < occupationStats.length; i++) {
+                if (occupationStats[i].occupation === d.occupation) {
+                    occupationStatsIndex = i;
+                }
+            }
+            if (occupationStatsIndex === -1) {
+                occupationStats.push({occupation: d.occupation, count: 0, goodSalaryCount: 0});
+                occupationStatsIndex = occupationStats.length - 1;
+            }
+
+            occupationStats[occupationStatsIndex].count++;
+            if (d.income === '>50K') {
+                occupationStats[occupationStatsIndex].goodSalaryCount++;
+            }
+        }
+    });
+
+
+    const goodSalaryMax = d3.max(occupationStats, d => d.goodSalaryCount);
+    const countMax = d3.max(occupationStats, d => d.count);
+    const proportionMax = d3.max(occupationStats, d => d.goodSalaryCount / d.count);
+
+
+    const svg = d3.select('#occupation_gs_bubble_svg');
+    const svgHeight = svg.attr('height');
+    const svgWidth = svg.attr('width');
+    const margin = {top: 80, right: 30, bottom: 50, left: 80};
+    const minCircleRadius = 2;
+    const maxCircleRadius = 10;
+
+    const innerHeight = svgHeight - margin.top - margin.bottom;
+    const innerWidth = svgWidth - margin.left - margin.right;
+
+    const graphG = svg.append('g')
+        .attr('transform', `translate( ${margin.left}, ${margin.top})`);
+
+    const radiusScale = d3.scaleLinear()
+        .domain([0, proportionMax])
+        .range([minCircleRadius, maxCircleRadius]);
+
+    const yScale = d3.scaleLinear()
+        .domain([0, goodSalaryMax])
+        .range([innerHeight, 0]);
+
+    const yAxis = graphG.append('g')
+        .call(d3.axisLeft(yScale));
+
+    const xScale = d3.scaleLinear()
+        .domain([0, countMax])
+        .range([0, innerWidth]);
+
+    const xAxis = graphG.append('g')
+        .call(d3.axisBottom(xScale))
+        .attr('transform', `translate(0, ${innerHeight})`);
+
+
+    graphG.selectAll('anything')
+        .data(occupationStats)
+        .enter()
+        .append('circle')
+        .attr('cx', d => xScale(d.count))
+        .attr('cy', d => yScale(d.goodSalaryCount))
+        .attr('r', d => radiusScale(d.goodSalaryCount / d.count))
+        .attr('fill', colors.goodSalary)
+        .attr('stroke', 'white')
+        .attr('opacity', '0.8')
+        .attr('stroke-width', 2);
+
+    svg.append('text')
+        .text('people, having good salary')
+        .attr('transform', `translate(${margin.left - 50}, ${margin.top + innerHeight - 40}), rotate(-90)`)
+        .style('font-size', '0.8em');
+
+    svg.append('text')
+        .text('people of occupation')
+        .attr('transform', `translate(${margin.left + innerWidth / 2 - 100}, ${margin.top + innerHeight + 40})`)
+        .style('font-size', '0.8em');
+
+    svg.append('text')
+        .text('Good salary portion by concurrence')
+        .attr('transform', `translate(60, 30)`);
+
+
+    console.log(radiusScale(0.1));
+    console.log([1,2,3].map(a => 1))
+
 }

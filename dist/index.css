@@ -48,7 +48,7 @@ text {
 }
 
 svg {
-    /*border: 1px solid red;*/
+    border: 1px solid red;
 }
 
 .plot-container {
@@ -71,7 +71,7 @@ svg {
 .navigator {
     margin-left: 0;
     top: 200px;
-    max-width: 300px;
+    max-width: 200px;
     position: fixed;
 }
 .navigator ul {
