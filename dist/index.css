@@ -47,10 +47,6 @@ text {
     fill: white;
 }
 
-svg {
-    /*border: 1px solid red;*/
-}
-
 .plot-container {
     margin: 80px 0 180px 0;
 }
