@@ -666,7 +666,7 @@ function drawOccupationSalaryBubble(data) {
     const svg = d3.select('#occupation_gs_bubble_svg');
     const svgHeight = svg.attr('height');
     const svgWidth = svg.attr('width');
-    const margin = {top: 80, right: 30, bottom: 50, left: 80};
+    const margin = {top: 80, right: 30, bottom: 80, left: 80};
     const minCircleRadius = 2;
     const maxCircleRadius = 10;
 
@@ -721,9 +721,4 @@ function drawOccupationSalaryBubble(data) {
     svg.append('text')
         .text('Good salary portion by concurrence')
         .attr('transform', `translate(60, 30)`);
-
-
-    console.log(radiusScale(0.1));
-    console.log([1,2,3].map(a => 1))
-
 }

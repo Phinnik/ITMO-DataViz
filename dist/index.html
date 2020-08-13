@@ -18,7 +18,7 @@
         <li onclick="document.getElementById('race_edu_pie_chart').scrollIntoView()">Education level by race</li>
         <li onclick="document.getElementById('edu_salary_scatter').scrollIntoView()">Salary by education level</li>
         <li onclick="document.getElementById('age_gs_dist').scrollIntoView()">Salary density by age</li>
-        <li onclick="document.getElementById('occupation_gs_circbar').scrollIntoView()">Good salary portion by concurrence</li>
+        <li onclick="document.getElementById('occupation_gs_bubble').scrollIntoView()">Good salary portion by concurrence</li>
     </ul>
 </div>
 
@@ -63,14 +63,14 @@
     </div>
 
 
-<!--
-    circular bar plot divided by occupation
-        bars divided by salary
-            red - bad
-            green - good
--->
+
     <div id="occupation_gs_bubble" class="plot-container">
         <svg id="occupation_gs_bubble_svg" height=400 width=600></svg>
+        <span>
+            На графике представлена зависимость колличество людей, работающих в данной сфере деятельности и имеющих хорошую зарплату, от колличества людей, работающих в данной сфере.
+
+            Радиус кругов показывает пропорцию. Чем больше радиус, тем больше доля людей с хорошей зарплатой в данной сфере.
+        </span>
     </div>
 
 </div>
