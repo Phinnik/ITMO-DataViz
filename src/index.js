@@ -446,6 +446,7 @@ function drawEduSalary(data) {
         .datum(bsPortionArray)
         .attr('fill', 'none')
         .attr('stroke', colors.badSalary)
+        .attr('stroke-width', 2)
         .attr("d", d3.line()
             .x((d, i) => xScale(i))
             .y(d => yScale(d))
@@ -627,5 +628,4 @@ function drawAgeGsDist(data) {
         .attr('height', 10)
         .attr('width', 10)
         .style('font-size', '0.8em')
-
 }
