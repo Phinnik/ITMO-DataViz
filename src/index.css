@@ -1,5 +1,16 @@
+* {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-size: 1em;
+    font-size: 17px;
     background-color: #2e2e2e;
     color: white;
 }
@@ -22,10 +33,11 @@ a:hover {
     color: #edefd4;
 }
 
-.container {
+.content-container {
     margin: auto;
     margin-top: 50px;
     max-width: 700px;
+    min-width: 280px;
     /*border: 3px dotted red;*/
 }
 
@@ -36,7 +48,7 @@ text {
 }
 
 svg {
-    /*border: 1px solid red;*/
+    border: 1px solid red;
     margin-top: 20px;
     margin-bottom: 100px;
 }
@@ -47,4 +59,35 @@ svg {
 
 .race_edu_part:hover {
     opacity: 50%;
+}
+
+.navigator {
+    margin-left: 0;
+    top: 200px;
+    max-width: 300px;
+    position: fixed;
+}
+.navigator ul {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+
+.navigator ul li {
+    list-style: none;
+    border: 1px solid #636363;
+    padding: 5px 10px;
+    margin-bottom: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.navigator ul li:hover {
+    background-color: #636363;
+}
+
+.navigator span {
+    margin-left: 20px;
+    margin-bottom: 20px;
+
 }

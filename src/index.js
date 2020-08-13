@@ -26,9 +26,10 @@ d3.csv('../data/adult.csv', function (row) {
         income: row.income
     }
 }).then(function (data) {
-    rawData = data;
     drawSexSalary(data);
     drawEduRace(data);
+    drawEduSalary(data);
+    drawAgeGsDist(data);
 });
 
 function drawSexSalary(data) {
@@ -147,6 +148,35 @@ function drawSexSalary(data) {
         .attr('x', xScale('Female'))
         .attr('y', yScale(stats.salaryBadFemale) - (yScale(0) - yScale(stats.salaryGoodFemale)))
         .style('fill', colors.goodSalary);
+
+    const legendG = svg.append('g')
+        .attr('transform', 'translate(450, 50)')
+
+    legendG.append('text')
+        .text('good salary')
+        .attr('transform', `translate(20, 0)`)
+        .style('font-size', '0.8em')
+
+    legendG.append('text')
+        .text('bad salary')
+        .attr('transform', `translate(20, 20)`)
+        .style('font-size', '0.8em')
+
+    legendG.append('rect')
+        .attr('fill', colors.goodSalary)
+        .attr('x', 0)
+        .attr('y', -9)
+        .attr('height', 10)
+        .attr('width', 10)
+        .style('font-size', '0.8em')
+
+    legendG.append('rect')
+        .attr('fill', colors.badSalary)
+        .attr('x', 0)
+        .attr('y', 11)
+        .attr('height', 10)
+        .attr('width', 10)
+        .style('font-size', '0.8em')
 }
 
 function drawEduRace(data) {
@@ -165,14 +195,11 @@ function drawEduRace(data) {
     const innerWhiteRadius = 50;
     const innerBlackRadius = 50;
     const outerWhiteRadius = Math.min(innerHeight, innerWidth) / 2 - 10;
-    const outerBlackRadius = Math.min(innerHeight, innerWidth) / 2 ;
-
-
+    const outerBlackRadius = Math.min(innerHeight, innerWidth) / 2;
 
 
     const pieG = svg.append('g')
         .attr('transform', `translate(${margin.left + innerWidth / 2}, ${margin.top + innerHeight / 2})`);
-
 
 
     const partColors = [
@@ -292,7 +319,7 @@ function drawEduRace(data) {
     const legendG = svg.append('g')
         .attr('transform', `translate(${svgWidth - 170}, 30)`);
 
-    for (let i = 0; i < blackEduStats.length; i ++) {
+    for (let i = 0; i < blackEduStats.length; i++) {
         legendG.append('rect')
             .attr('transform', `translate(${0}, ${i * legendMargin - squareSize})`)
             .attr('height', squareSize)
@@ -300,7 +327,7 @@ function drawEduRace(data) {
             .attr('fill', color(i));
 
         legendG.append('text')
-            .attr('transform', `translate(${squareSize*2}, ${i * legendMargin})`)
+            .attr('transform', `translate(${squareSize * 2}, ${i * legendMargin})`)
             .style('font-size', '0.9em')
             .text(` - ${blackEduStats[i].title}`)
     }
@@ -311,24 +338,225 @@ function drawEduRace(data) {
         .text('White race')
         .style('font-size', '0.8em');
 
-    console.log(whiteAmount);
 
     const labelBlack = svg.append('g')
         .attr('transform', `translate(90, 130)`)
         .append('text')
         .text('Other race')
         .style('font-size', '0.8em');
+}
 
-    console.log(blackAmount);
+function drawEduSalary(data) {
+    const svg = d3.select('#edu_salary_scatter_svg');
+    const svgHeight = svg.attr('height');
+    const svgWidth = svg.attr('width');
+    const margin = {top: 80, right: 150, bottom: 50, left: 70};
 
-    console.log(whitePie);
-    console.log(blackPie);
+    const innerHeight = svgHeight - margin.top - margin.bottom;
+    const innerWidth = svgWidth - margin.left - margin.right;
 
-    console.log(whitePortion);
-    console.log(blackPortion);
-    console.log(blackPortion + whitePortion);
+    // data preprocessing
+    const gsEduStats = [
+        {level: 0, title: 'dropout', count: 0},
+        {level: 1, title: 'school', count: 0},
+        {level: 2, title: 'college', count: 0},
+        {level: 3, title: 'graduates', count: 0},
+        {level: 4, title: 'postgraduates', count: 0},
+    ]
 
-    console.log(legendG);
+    const bsEduStats = [
+        {level: 0, title: 'dropout', count: 0},
+        {level: 1, title: 'school', count: 0},
+        {level: 2, title: 'college', count: 0},
+        {level: 3, title: 'graduates', count: 0},
+        {level: 4, title: 'postgraduates', count: 0},
+    ]
 
-    // a = colorScaleWhite;
+    data.forEach(function (row) {
+        if (row.income === '>50K') {
+            if (1 <= row.education_num && row.education_num <= 3) {
+                gsEduStats[0].count += 1;
+            } else if (4 <= row.education_num && row.education_num <= 9) {
+                gsEduStats[1].count += 1;
+            } else if (10 <= row.education_num && row.education_num <= 12) {
+                gsEduStats[2].count += 1;
+            } else if (13 <= row.education_num && row.education_num <= 14) {
+                gsEduStats[3].count += 1;
+            } else {
+                gsEduStats[4].count += 1;
+            }
+        } else {
+            if (1 <= row.education_num && row.education_num <= 3) {
+                bsEduStats[0].count += 1;
+            } else if (4 <= row.education_num && row.education_num <= 9) {
+                bsEduStats[1].count += 1;
+            } else if (10 <= row.education_num && row.education_num <= 12) {
+                bsEduStats[2].count += 1;
+            } else if (13 <= row.education_num && row.education_num <= 14) {
+                bsEduStats[3].count += 1;
+            } else {
+                bsEduStats[4].count += 1;
+            }
+        }
+    });
+
+    const gsPortionArray = [];
+    const bsPortionArray = [];
+
+    for (let i = 0; i < gsEduStats.length; i++) {
+        const eduCount = gsEduStats[i].count + bsEduStats[i].count;
+        const gsPortion = gsEduStats[i].count / eduCount;
+        const bsPortion = bsEduStats[i].count / eduCount;
+
+        gsPortionArray.push(gsPortion);
+        bsPortionArray.push(bsPortion);
+    }
+
+    const grafG = svg.append('g')
+        .attr('transform', `translate( ${margin.left}, ${margin.top})`);
+
+    const xScale = d3.scaleLinear()
+        .domain([0, 4])
+        .rangeRound([0, innerWidth]);
+
+    grafG.append('g')
+        .attr('transform', `translate( ${0}, ${innerHeight})`)
+        .call(d3.axisBottom(xScale)
+            .ticks(5)
+            .tickFormat(d => gsEduStats[d].title));
+
+    const yScale = d3.scaleLinear()
+        .domain([0, 1])
+        .range([innerHeight, 0])
+
+    grafG.append('g')
+        .attr('transform', `translate( ${0}, ${0})`)
+        .call(d3.axisLeft(yScale));
+
+    grafG.append('path')
+        .datum(gsPortionArray)
+        .attr('fill', 'none')
+        .attr('stroke', colors.goodSalary)
+        .attr("d", d3.line()
+            .x((d, i) => xScale(i))
+            .y(d => yScale(d))
+        );
+
+    grafG.append('path')
+        .datum(bsPortionArray)
+        .attr('fill', 'none')
+        .attr('stroke', colors.badSalary)
+        .attr("d", d3.line()
+            .x((d, i) => xScale(i))
+            .y(d => yScale(d))
+        );
+
+
+    for (let i = 0; i < gsPortionArray.length; i++) {
+        grafG.append('rect')
+            .attr('x', xScale(i) - 10 / 2)
+            .attr('y', yScale(gsPortionArray[i]) - 10 / 2)
+            .attr('height', 10)
+            .attr('width', 10)
+            .attr('fill', colors.goodSalary)
+
+        grafG.append('rect')
+            .attr('x', xScale(i) - 10 / 2)
+            .attr('y', yScale(bsPortionArray[i]) - 10 / 2)
+            .attr('height', 10)
+            .attr('width', 10)
+            .attr('fill', colors.badSalary)
+    }
+
+    const legendG = svg.append('g')
+        .attr('transform', 'translate(450, 50)')
+
+    legendG.append('text')
+        .text('good salary')
+        .attr('transform', `translate(20, 0)`)
+        .style('font-size', '0.8em')
+
+    legendG.append('text')
+        .text('bad salary')
+        .attr('transform', `translate(20, 20)`)
+        .style('font-size', '0.8em')
+
+    legendG.append('rect')
+        .attr('fill', colors.goodSalary)
+        .attr('x', 0)
+        .attr('y', -9)
+        .attr('height', 10)
+        .attr('width', 10)
+        .style('font-size', '0.8em')
+
+    legendG.append('rect')
+        .attr('fill', colors.badSalary)
+        .attr('x', 0)
+        .attr('y', 11)
+        .attr('height', 10)
+        .attr('width', 10)
+        .style('font-size', '0.8em')
+
+    const titleG = svg.append('g')
+        .attr('transform', `translate(60, 30)`)
+        .append('text')
+        .text('Salary portion by education level')
+}
+
+function drawAgeGsDist(data) {
+    const svg = d3.select('#age_gs_dist_svg');
+    const svgHeight = svg.attr('height');
+    const svgWidth = svg.attr('width');
+    const margin = {top: 80, right: 150, bottom: 50, left: 70};
+
+    const innerHeight = svgHeight - margin.top - margin.bottom;
+    const innerWidth = svgWidth - margin.left - margin.right;
+
+    // data preprocessing
+    const ageGsStat = [];
+    const ageBsStat = [];
+
+    for (let i = 0; i < 100; i++) {
+        ageGsStat.push(0);
+        ageBsStat.push(0);
+    }
+
+
+    data.forEach(function (d) {
+        if (d.income === '>50K') {
+            ageGsStat[d.age] += 1;
+        } else {
+            ageBsStat[d.age] += 1;
+        }
+    })
+
+    let ageSalaryStat = [];
+    for (let i = 0; i < ageBsStat.length; i++) {
+        ageSalaryStat.push({
+            age: +i,
+            gsCount: ageGsStat[i],
+            bsCount: ageBsStat[i],
+        })
+    }
+
+    const graphG = svg.append('g')
+        .attr('transform', `translate(${margin.left}, ${margin.top})`);
+
+    const yScale = d3.scaleLinear()
+        .domain([0, 1])
+        .range([0, svgHeight - margin.top - margin.bottom]);
+
+    const yAxis = graphG.append('g')
+        .call(d3.axisLeft(yScale));
+
+    const xScale = d3.scaleLinear()
+        .domain([0, 100])
+        .range([0, svgWidth - margin.left - margin.right]);
+
+    const xAxis = graphG.append('g')
+        .call(d3.axisBottom(xScale))
+        .attr('transform', `translate(0, ${svgHeight - margin.top - margin.bottom})`);
+
+
+
 }

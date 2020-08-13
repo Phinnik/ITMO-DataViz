@@ -11,17 +11,23 @@
 </head>
 <body>
 
-<div class="container">
+<div class="navigator">
+    <span>Navigation</span>
+    <ul>
+        <li onclick="document.getElementById('sex_salary_bar').scrollIntoView()">Salary by sex</li>
+        <li onclick="document.getElementById('race_edu_pie_chart').scrollIntoView()">Education level by race</li>
+        <li onclick="document.getElementById('edu_salary_scatter').scrollIntoView()">Salary by education level</li>
+        <li onclick="document.getElementById('age_gs_dist').scrollIntoView()">Salary distribution by age</li>
+        <li onclick="document.getElementById('occupation_gs_circbar').scrollIntoView()">Salary by occupation</li>
+    </ul>
+</div>
+
+
+
+
+<div class="content-container">
 
     <h1>Adult census study</h1>
-    <h2>Contents</h2>
-    <ul class="table-of-contents">
-        <li><a onclick="document.getElementById('sex_salary_bar').scrollIntoView()">Salary by sex</a></li>
-        <li><a onclick="document.getElementById('race_edu_pie_chart').scrollIntoView()">Education level by race</a></li>
-        <li>Salary by education level</li>
-        <li>Salary distribution by age</li>
-        <li>Salary by occupation</li>
-    </ul>
 
     <h2>PLots</h2>
 
@@ -35,16 +41,8 @@
     </div>
 
 
-
-<!--
-    2 scatter plots of salary portion by edu
-      x - edu level
-      y - salary portion
-        red - bad salary portion
-        green - good salary portion
--->
     <div id="edu_salary_scatter">
-        <svg id="edu_salary_scatter_svg"></svg>
+        <svg id="edu_salary_scatter_svg" height=400 width=600></svg>
     </div>
 
 
@@ -54,7 +52,7 @@
         green - good salary
 -->
     <div id="age_gs_dist">
-        <svg id="age_gs_dist_svg"></svg>
+        <svg id="age_gs_dist_svg" height=400 width=600></svg>
     </div>
 
 
@@ -66,7 +64,7 @@
             green - good
 -->
     <div id="occupation_gs_circbar">
-        <svg id="occupation_gs_circbar_svg"></svg>
+        <svg id="occupation_gs_circbar_svg" height=400 width=600></svg>
     </div>
 
 </div>
