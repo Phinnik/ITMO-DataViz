@@ -3,7 +3,7 @@
 
 ## Форматы
 1. [Тетрадка на Kaggle](https://www.kaggle.com/phinnik/adult-census-income)
-1. github page
+1. [github page](https://phinnik.github.io/ITMO-DataViz/dist/)
 
 ___
 Репозиторий для работ по курсу "Визуализации данных".
