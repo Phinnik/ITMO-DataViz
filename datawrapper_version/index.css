@@ -71,7 +71,8 @@ nav li:hover {
         float: unset;
         background-color: #f6f6f6;
         box-shadow: 0 3px  5px rgba(0, 0, 0, 0.24);
-        height: 40px;
+        height: 60px;
+        font-size: 2em;
     }
 
     nav ul {
