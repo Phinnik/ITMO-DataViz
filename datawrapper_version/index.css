@@ -24,7 +24,7 @@ nav {
     opacity: 0.7;
     transition: opacity 0.2s;
     width: 200px;
-    float: left;
+    float: right;
 }
 
 nav:hover {
@@ -58,21 +58,40 @@ nav li:hover {
     border-bottom-color: #9c9ce0;
 }
 
+.navigation-item-current {
+    border-bottom: 2px solid #4b4b6e;
+    opacity: 1;
+}
+
 
 @media (max-width: 1350px) {
 
+    /*nav {*/
+    /*    opacity: 1;*/
+    /*    margin: 20px auto;*/
+    /*    width: 90%;*/
+    /*    max-width: 900px;*/
+    /*    min-width: 500px;*/
+    /*    top: 0;*/
+    /*    float: unset;*/
+    /*    background-color: #f6f6f6;*/
+    /*    box-shadow: 0 3px  5px rgba(0, 0, 0, 0.24);*/
+    /*    height: 60px;*/
+    /*    font-size: 2em;*/
+    /*}*/
+
     nav {
         opacity: 1;
-        margin: 20px auto;
-        width: 90%;
-        max-width: 900px;
-        min-width: 500px;
-        top: 0;
+        margin: 0 auto 0 auto;
+        width: 100%;
+        top: unset;
         float: unset;
         background-color: #f6f6f6;
-        box-shadow: 0 3px  5px rgba(0, 0, 0, 0.24);
+        box-shadow: 0 -3px  5px rgba(0, 0, 0, 0.45);
         height: 60px;
-        font-size: 2em;
+        font-size: 1.8em;
+        position: fixed;
+        bottom: 0;
     }
 
     nav ul {
@@ -85,7 +104,7 @@ nav li:hover {
         justify-content: center;
         /*flex-direction: row;*/
         flex-direction: row;
-
+        margin-top: -6px;
     }
 
 
@@ -96,26 +115,18 @@ nav li:hover {
     nav li {
         display: inline-block;
         margin-left: 30px;
+        opacity: 1;
     }
 
-    nav a {
-
+    nav li {
+        border-bottom: unset;
     }
-
 }
 
 
 
-
-
-
-
-.navigation-item-current {
-    border-bottom: 2px solid #4b4b6e;
-    opacity: 1;
-}
 .state-container {
-    margin: auto;
+    margin: 0 auto 20px auto;
     width: 90%;
     max-width: 900px;
     min-width: 500px;
@@ -130,19 +141,13 @@ h1 {
 }
 
 
-
-.paragraph-container:first-of-type {
-    margin-top: 50px;
-}
-
 .paragraph-container {
     border: 1px solid #aa9e9e;
     padding: 20px;
-    margin: 0 auto 50px auto;
+    margin: 50px auto 0 auto;
     border-radius: 5px;
     background-color: #fffefe;
     width: 85%;
-
 }
 
 .plot-img {
@@ -151,7 +156,7 @@ h1 {
     min-width: 200px;
 
     display: block;
-    margin: 20px auto 20px auto;
+    margin: 20px auto 50px auto;
     box-shadow: 0 0 5px;
 }
 
