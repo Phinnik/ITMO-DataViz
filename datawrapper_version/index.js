@@ -1,10 +1,15 @@
-$(document).ready(function () {
+$(window).on('load', function () {
 
     // navigation construction
     const paragraphPositions = [];
 
     $('.paragraph-container').each(function () {
-        paragraphPositions.push(($(this).offset().top));
+
+        let bodyRect = document.body.getBoundingClientRect(),
+            elemRect = this.getBoundingClientRect(),
+            offset = elemRect.top - bodyRect.top;
+
+        paragraphPositions.push(offset);
         let headerText = $(this).children('.paragraph-header')[0].textContent;
 
         let nav_item = $("<li></li>")
@@ -29,9 +34,36 @@ $(document).ready(function () {
                 $(`.navigation-item:eq(${currentParagraphIndex})`).toggleClass('navigation-item-current');
                 $(`.navigation-item:eq(${i})`).toggleClass('navigation-item-current');
                 currentParagraphIndex = i;
-
+            } else if (currentParagraphIndex !== i && currentScreenY > paragraphPositions[paragraphPositions.length - 1]) {
+                $(`.navigation-item:eq(${currentParagraphIndex})`).toggleClass('navigation-item-current');
+                $(`.navigation-item:eq(${i})`).toggleClass('navigation-item-current');
+                currentParagraphIndex = i;
             }
+
         }
+    });
+    // _________________________________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
+
+
+    // image scaling
+    $('.plot-img').click(function () {
+
+        let modalImg = document.createElement('img')
+        modalImg.src = this.src;
+        modalImg.alt = this.alt;
+        modalImg.className = 'modal--content';
+        $('.modal')
+            .append(modalImg)
+            .show();
+
+    })
+
+    $('.modal').click(function () {
+
+        $(this).children('img').remove();
+        $(this).hide();
+
 
     })
 

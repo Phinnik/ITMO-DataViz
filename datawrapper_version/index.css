@@ -17,9 +17,10 @@ ________________________________
 */
 /* TODO: width */
 nav {
+    position: -webkit-sticky;
     position: sticky;
-    top: 20px;
-    margin: 200px 10px;
+    top: 10px;
+    margin: 200px 10px 0 0;
     /*border: 1px solid gray;*/
     opacity: 0.7;
     transition: opacity 0.2s;
@@ -89,7 +90,7 @@ nav li:hover {
         background-color: #f6f6f6;
         box-shadow: 0 -3px  5px rgba(0, 0, 0, 0.45);
         height: 60px;
-        font-size: 1.8em;
+        font-size: 2em;
         position: fixed;
         bottom: 0;
     }
@@ -124,13 +125,14 @@ nav li:hover {
 }
 
 
-
 .state-container {
     margin: 0 auto 20px auto;
     width: 90%;
     max-width: 900px;
     min-width: 500px;
     box-shadow: 0 0 5px ;
+    margin-bottom: 2200px;
+    padding-bottom: 30px;
 }
 
 h1 {
@@ -158,11 +160,51 @@ h1 {
     display: block;
     margin: 20px auto 50px auto;
     box-shadow: 0 0 5px;
+
+    cursor: pointer;
+    transition: opacity 0.2s;
 }
 
+.plot-img:hover {
+    opacity: 0.9;
+}
+
+.plot-img__big {
+    margin: auto;
+    position: fixed;
+
+    left: 0;
+    top:0;
+    width: 1000px;
+    max-width: unset;
+    min-width: unset;
+    z-index: 999;
+}
 
 .paragraph-header {
     font-size: 2rem;
     font-family: 'Roboto', sans-serif;
     margin-bottom: 15px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow: auto;
+
+    background-color: rgba(0, 0, 0, 0.88);
+}
+
+.modal--content {
+    margin: 100px auto;
+    display: block;
+    width: 80%;
+    max-width: 900px;
+    /*border: 1px solid #22225e;*/
+    box-shadow: 0 0 30px;
 }
