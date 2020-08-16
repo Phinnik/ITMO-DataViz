@@ -53,22 +53,15 @@ $(window).on('load', function () {
         modalImg.src = this.src;
         modalImg.alt = this.alt;
         modalImg.className = 'modal--content';
+
         $('.modal')
             .append(modalImg)
-            .show();
-
+            .fadeIn(200);
     })
 
     $('.modal').click(function () {
-
         $(this).children('img').remove();
-        $(this).hide();
-
-
+        $(this).fadeOut(200);
     })
-
-
 })
-
-
 
