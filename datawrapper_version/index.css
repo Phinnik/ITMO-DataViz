@@ -75,7 +75,7 @@ nav li:hover {
     padding-bottom: 30px;
 }
 
-h1 {
+.state-title {
     color: white;
     padding: 10px;
     background-color: #4a4a6d;
@@ -151,7 +151,7 @@ h1 {
 .yandex-donation {
     width: 20%;
     margin: auto;
-    padding-bottom: 1000px;
+    /*padding-bottom: 1000px;*/
     min-width: 500px;
 }
 

@@ -45,6 +45,21 @@ $(window).on('load', function () {
     // _________________________________________________________________________________________________________________
     // _________________________________________________________________________________________________________________
 
+    // generating empty space
+    console.log(paragraphPositions[paragraphPositions.length - 1])
+    let bodyRect = document.body.getBoundingClientRect(),
+        elemRect = $('.state--empty-space')[0].getBoundingClientRect(),
+        offset = elemRect.top - bodyRect.top;
+
+    let emptySpaceHeight = screen.availHeight - (offset - paragraphPositions[paragraphPositions.length - 1]);
+
+    console.log(emptySpaceHeight);
+    $('.state--empty-space').css('height', `${emptySpaceHeight}px`);
+
+    'state--empty-space'
+    // _________________________________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
+
 
     // image scaling
     $('.plot-img').click(function () {
@@ -62,6 +77,21 @@ $(window).on('load', function () {
     $('.modal').click(function () {
         $(this).children('img').remove();
         $(this).fadeOut(200);
-    })
-})
+    });
 
+
+    $(document).keydown((key) => {
+        if (key.keyCode === 27) {
+            $('.modal')
+                .children('img')
+                .remove();
+            $('.modal').fadeOut(200);
+            console.log(key.keyCode)
+        }
+    });
+
+    // _________________________________________________________________________________________________________________
+    // _________________________________________________________________________________________________________________
+
+
+})
