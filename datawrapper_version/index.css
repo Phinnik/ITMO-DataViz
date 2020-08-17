@@ -359,11 +359,17 @@ nav li:hover {
         height: 30px;
         font-size: 1em;
     }
+    body {
+        font-size: 1.5em;
+    }
 }
 
 @media screen and (max-width: 650px) {
     nav {
         height: 60px;
+        font-size: 2em;
+    }
+    body {
         font-size: 2em;
     }
 }
