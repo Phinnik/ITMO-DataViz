@@ -88,6 +88,7 @@ body {
 
 .paragraph-container p {
     margin-bottom: 10px;
+    font-family: "Noto Sans", sans-serif;
 }
 
 .paragraph-container p:last-of-type {
@@ -96,6 +97,30 @@ body {
 
 
 /*paragraph attachments*/
+
+/* paragraph plot */
+.paragraph--plot {
+    width: 80%;
+    max-width: 700px;
+    min-width: 200px;
+
+    padding: 10px;
+    display: block;
+    margin: 20px auto 0 auto;
+    box-shadow: 0 0 5px;
+
+    cursor: pointer;
+}
+
+.paragraph--plot-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.paragraph--plot__small-inline {
+    width: 40%;
+    height: max-content;
+}
 
 /* attachment table */
 .paragraph--table {
@@ -266,6 +291,13 @@ nav li:hover {
 
 /*screen width breakpoint*/
 @media (max-width: 1200px) {
+
+    .paragraph--plot-row {
+        flex-direction: column;
+    }
+    .paragraph--plot__small-inline {
+        width: 80%;
+    }
 
     .left-block {
         display: none;
