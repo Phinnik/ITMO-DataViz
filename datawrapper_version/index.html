@@ -2,23 +2,30 @@
 <html lang="en">
 <head>
     <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" >
-        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
         (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
         ym(66485236, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
         });
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/66485236" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/66485236" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
     <!-- /Yandex.Metrika counter -->
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width"/>
 
     <title>Adult census study</title>
 
@@ -32,79 +39,198 @@
 </head>
 <body>
 
-<nav>
-    <ul id="navigation-menu">
+<img class="background-image" src="images/background-image.jpg" alt="background image">
 
-    </ul>
-</nav>
+<div class="state">
 
-<div class="state-container">
+    <div class="left-block"></div>
+
+    <div class="state-container">
 
 
+        <h1 class="state--title">Adult census study</h1>
 
-    <h1 class="state-title">Adult census study</h1>
+        <div id="paragraphs">
+            <div class="paragraph-container">
+                <div class="paragraph-header">О датасете</div>
+                <p>
+                    Датасет "Adult census income" был собран американским бюро переписи населения.
+                    Он состоит из <strong>32561</strong> сущности, имеющих <strong>15</strong> признаков, отражающих
+                    информацию о гражданах.
+                </p>
 
-    <div id="paragraphs">
-        <div class="paragraph-container">
-            <div class="paragraph-header">Header</div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos fuga molestiae similique voluptatem! Ad
-            asperiores corporis delectus dicta dolores eum facere facilis laudantium, molestias officia quis rerum sint,
-            soluta totam!
-            <img src="./images/cat.jpg" alt="cat" class="plot-img">
+                <ul>
+                    <li><strong>age</strong> - возраст: (дискретный)</li>
+                    <li><strong>workclass</strong> - рабочий класс: (номинальный)</li>
+                    <li><strong>fnlwgt</strong> - колличество граждан, которое описывает данная сущность, по мнению
+                        бюро:
+                        (дискретный)
+                    </li>
+                    <li><strong>education</strong> - образование: (порядковый)</li>
+                    <li><strong>education.num</strong> количество лет, во время которого человек получал образование:
+                        (дискретный)
+                    </li>
+                    <li><strong>marital.status</strong> - статус женитьбы, отличается от семейного положения тем, что
+                        описывает состояние с
+                        партнером (например, "в разводе", "вдова" и т.д.): (номинальный)
+                    </li>
+                    <li><strong>occupation</strong> - род занятий: (номинальный)</li>
+                    <li><strong>relationship</strong> - семейное положение: (номинальный)</li>
+                    <li><strong>race</strong> - раса: (номинальный)</li>
+                    <li><strong>sex</strong> - пол: (номинальный)</li>
+                    <li><strong>capital.gain</strong> - прирост капитала: (континуальный)</li>
+                    <li><strong>capital.loss</strong> - потеря капитала: (континуальный)</li>
+                    <li><strong>hours.per.week</strong> - количество рабочих часов в неделю: (дискретный)</li>
+                    <li><strong>native.country</strong> - родная страна: (номинальный)</li>
+                    <li><strong>income</strong> - получает ли человек более 50к долларов в год: (бинарный)</li>
+                </ul>
+
+                <div class="paragraph--table">
+                    <table border="0">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>age</th>
+                            <th>workclass</th>
+                            <th>fnlwgt</th>
+                            <th>education</th>
+                            <th>education.num</th>
+                            <th>marital.status</th>
+                            <th>occupation</th>
+                            <th>relationship</th>
+                            <th>race</th>
+                            <th>sex</th>
+                            <th>capital.gain</th>
+                            <th>capital.loss</th>
+                            <th>hours.per.week</th>
+                            <th>native.country</th>
+                            <th>income</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>0</th>
+                            <td>90</td>
+                            <td>?</td>
+                            <td>77053</td>
+                            <td>HS-grad</td>
+                            <td>9</td>
+                            <td>Widowed</td>
+                            <td>?</td>
+                            <td>Not-in-family</td>
+                            <td>White</td>
+                            <td>Female</td>
+                            <td>0</td>
+                            <td>4356</td>
+                            <td>40</td>
+                            <td>United-States</td>
+                            <td>&lt;=50K</td>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <td>82</td>
+                            <td>Private</td>
+                            <td>132870</td>
+                            <td>HS-grad</td>
+                            <td>9</td>
+                            <td>Widowed</td>
+                            <td>Exec-managerial</td>
+                            <td>Not-in-family</td>
+                            <td>White</td>
+                            <td>Female</td>
+                            <td>0</td>
+                            <td>4356</td>
+                            <td>18</td>
+                            <td>United-States</td>
+                            <td>&lt;=50K</td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td>66</td>
+                            <td>?</td>
+                            <td>186061</td>
+                            <td>Some-college</td>
+                            <td>10</td>
+                            <td>Widowed</td>
+                            <td>?</td>
+                            <td>Unmarried</td>
+                            <td>Black</td>
+                            <td>Female</td>
+                            <td>0</td>
+                            <td>4356</td>
+                            <td>40</td>
+                            <td>United-States</td>
+                            <td>&lt;=50K</td>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <td>54</td>
+                            <td>Private</td>
+                            <td>140359</td>
+                            <td>7th-8th</td>
+                            <td>4</td>
+                            <td>Divorced</td>
+                            <td>Machine-op-inspct</td>
+                            <td>Unmarried</td>
+                            <td>White</td>
+                            <td>Female</td>
+                            <td>0</td>
+                            <td>3900</td>
+                            <td>40</td>
+                            <td>United-States</td>
+                            <td>&lt;=50K</td>
+                        </tr>
+                        <tr>
+                            <th>4</th>
+                            <td>41</td>
+                            <td>Private</td>
+                            <td>264663</td>
+                            <td>Some-college</td>
+                            <td>10</td>
+                            <td>Separated</td>
+                            <td>Prof-specialty</td>
+                            <td>Own-child</td>
+                            <td>White</td>
+                            <td>Female</td>
+                            <td>0</td>
+                            <td>3900</td>
+                            <td>40</td>
+                            <td>United-States</td>
+                            <td>&lt;=50K</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="paragraph--attachment-title">Пример таблицы</div>
+
+
+            </div>
+
+            <div class="paragraph-container">
+                <div class="paragraph-header">О чем здесь будет написано</div>
+
+                <img src="./images/cat.jpg" alt="cat" class="paragraph--img">
+                <div class="paragraph--attachment-title">Пример таблицы</div>
+                asdasda
+            </div>
+
+
         </div>
-
-
-        <div class="paragraph-container">
-            <div class="paragraph-header">Lorem ipsum</div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos fuga molestiae similique voluptatem! Ad
-            asperiores corporis delectus dicta dolores eum facere facilis laudantium, molestias officia quis rerum sint,
-            soluta totam!
-        </div>
-
-        <div class="paragraph-container">
-            <div class="paragraph-header">It's a cat!</div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos fuga molestiae similique voluptatem! Ad
-            asperiores corporis delectus dicta dolores eum facere facilis laudantium, molestias officia quis rerum sint,
-            soluta totam!
-            <img src="./images/cat.jpg" alt="cat" class="plot-img">
-        </div>
-
-        <div class="paragraph-container">
-            <div class="paragraph-header">Another header</div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos fuga molestiae similique voluptatem! Ad
-            asperiores corporis delectus dicta dolores eum facere facilis laudantium, molestias officia quis rerum sint,
-            soluta totam!
-        </div>
-        <div class="paragraph-container">
-            <div class="paragraph-header">Another header</div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos fuga molestiae similique voluptatem! Ad
-            asperiores corporis delectus dicta dolores eum facere facilis laudantium, molestias officia quis rerum sint,
-            soluta totam!
-        </div>
-        <div class="paragraph-container">
-            <div class="paragraph-header">Another header</div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos fuga molestiae similique voluptatem! Ad
-            asperiores corporis delectus dicta dolores eum facere facilis laudantium, molestias officia quis rerum sint,
-            soluta totam!
-        </div>
-        <div class="paragraph-container">
-            <div class="paragraph-header">Another header</div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos fuga molestiae similique voluptatem! Ad
-            asperiores corporis delectus dicta dolores eum facere facilis laudantium, molestias officia quis rerum sint,
-            soluta totam!
-        </div>
-        <div class="paragraph-container">
-            <div class="paragraph-header">Another header</div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos fuga molestiae similique voluptatem! Ad
-            asperiores corporis delectus dicta dolores eum facere facilis laudantium, molestias officia quis rerum sint,
-            soluta totam!
-        </div>
-
     </div>
+
+    <nav>
+        <ul id="navigation-menu">
+        </ul>
+    </nav>
+
 </div>
 
+
+
+
 <div class="yandex-donation">
-    <iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=seller&targets=%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%B8%20%D0%B7%D0%B0%D0%B4%D0%BE%D0%BD%D0%B0%D1%82%D0%B8%D1%82%D1%8C&targets-hint=&default-sum=20&button-text=11&payment-type-choice=on&comment=on&hint=&successURL=https%3A%2F%2Fgithub.com%2FPhinnik&quickpay=shop&account=4100115728569885" width="100%" height="301" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+    <iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=seller&targets=%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%B8%20%D0%B7%D0%B0%D0%B4%D0%BE%D0%BD%D0%B0%D1%82%D0%B8%D1%82%D1%8C&targets-hint=&default-sum=20&button-text=11&payment-type-choice=on&comment=on&hint=&successURL=https%3A%2F%2Fgithub.com%2FPhinnik&quickpay=shop&account=4100115728569885"
+            width="100%" height="301" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
 </div>
 <div class="state--empty-space"></div>
 <div class="modal">

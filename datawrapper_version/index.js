@@ -62,7 +62,7 @@ $(window).on('load', function () {
 
 
     // image scaling
-    $('.plot-img').click(function () {
+    $('.paragraph--img').click(function () {
 
         let modalImg = document.createElement('img')
         modalImg.src = this.src;
