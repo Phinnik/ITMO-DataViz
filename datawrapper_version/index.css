@@ -277,6 +277,8 @@ nav li:hover {
     }
 
     .state-container {
+        align-self: center;
+        width: 90%;
     }
 
 
