@@ -272,15 +272,11 @@ nav li:hover {
     }
 
     .state {
-        background-color: red;
-        border: 3px solid greenyellow;
-        width: 100%;
+        flex-direction: column;
+        align-items: baseline;
     }
 
     .state-container {
-        margin: 0 auto 0 auto;
-        min-width: 200px;
-        background-color: orange;
     }
 
 
