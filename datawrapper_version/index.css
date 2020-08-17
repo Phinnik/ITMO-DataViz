@@ -345,7 +345,7 @@ nav li:hover {
 
     nav li {
         display: inline-block;
-        margin-left: 30px;
+        margin: 0 30px 0 30px;
         opacity: 1;
     }
 
@@ -366,10 +366,10 @@ nav li:hover {
 
 @media screen and (max-width: 650px) {
     nav {
-        height: 60px;
-        font-size: 2em;
+        height: 90px;
+        font-size: 1.5em;
     }
     body {
-        font-size: 2em;
+        font-size: 3em;
     }
 }
