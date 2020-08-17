@@ -82,11 +82,13 @@
                 </p>
 
                 <p>
-                    Суть задания: выбрать датасет, изучить, выдвинуть гипотиезы. Для визуализации использовать <a target="_blank" rel="noopener noreferrer" href="https://www.datawrapper.de/">Datawrapper</a>
+                    Суть задания: выбрать датасет, изучить, выдвинуть гипотиезы. Для визуализации использовать <a
+                        target="_blank" rel="noopener noreferrer" href="https://www.datawrapper.de/">Datawrapper</a>
                 </p>
 
                 <p>
-                    Я выбрал датасет <a target="_blank" rel="noopener noreferrer" href="https://www.kaggle.com/uciml/adult-census-income">"Adult census
+                    Я выбрал датасет <a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.kaggle.com/uciml/adult-census-income">"Adult census
                     income"</a>
                 </p>
 
@@ -300,9 +302,54 @@
             <div class="paragraph-container">
                 <div class="paragraph-header">Мужчины зарабатывают больше женщин</div>
 
-                <img src="./images/cat.jpg" alt="cat" class="paragraph--img">
-                <div class="paragraph--attachment-title">Пример таблицы</div>
-                asdasda
+                <div class="paragraph--plot">
+                    <iframe title="Доли количества людей, получающих 50K$/год" aria-label="Bar Chart"
+                            id="datawrapper-chart-XWxSB" src="https://datawrapper.dwcdn.net/XWxSB/1/" scrolling="no"
+                            frameborder="0" style="width: 0; min-width: 100% !important; border: none;"
+                            height="141"></iframe>
+                    <script type="text/javascript">!function () {
+                        "use strict";
+                        window.addEventListener("message", (function (a) {
+                            if (void 0 !== a.data["datawrapper-height"]) for (var e in a.data["datawrapper-height"]) {
+                                var t = document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']");
+                                t && (t.style.height = a.data["datawrapper-height"][e] + "px")
+                            }
+                        }))
+                    }();
+                    </script>
+                </div>
+                <p>Думаю, что этот график много объяснять не надо. Доля мужчин, зарабатывающих 50K$ в год почти в три раза больше доли женщин.</p>
+            </div>
+
+
+            <div class="paragraph-container">
+                <div class="paragraph-header">Лучший возраст для заработка</div>
+                <p> Давайте теперь посмотрим, как возвраст влияет на возможность зарабатывать </p>
+
+                <div class="paragraph--plot">
+                    <iframe title="Доли количества людей, получающих 50K$/год" aria-label="Interactive line chart"
+                            id="datawrapper-chart-K0jIj" src="https://datawrapper.dwcdn.net/K0jIj/1/" scrolling="no"
+                            frameborder="0" style="width: 0; min-width: 100% !important; border: none;"
+                            height="426"></iframe>
+                    <script type="text/javascript">!function () {
+                        "use strict";
+                        window.addEventListener("message", (function (a) {
+                            if (void 0 !== a.data["datawrapper-height"]) for (var e in a.data["datawrapper-height"]) {
+                                var t = document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']");
+                                t && (t.style.height = a.data["datawrapper-height"][e] + "px")
+                            }
+                        }))
+                    }();</script>
+                </div>
+                <div class="paragraph--attachment-title"></div>
+
+
+                <p>На графике зеленым цветом выделен промежуток больших значений. То есть, примерно с 37 лет до 61 года
+                    вероятность зарабатывать много денег будет наивысшая.</p>
+                <p>Красным выделены скачки, это значит, что данных не хватает. Нельзя сказать, что период жизни 70 до 85
+                    лет наиболее благоприятен для заработка. Данных потому и не хватает: дожить еще до такого возраста
+                    нужно...</p>
+
             </div>
 
 
