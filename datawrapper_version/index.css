@@ -156,11 +156,12 @@ nav li:hover {
 }
 
 
-@media (orientation: portrait) {
+@media (max-width: 1200px) {
 
     .state-container {
-        width: 90%
+        width: 90%;
     }
+
 
     nav {
         opacity: 1;
@@ -170,8 +171,6 @@ nav li:hover {
         float: unset;
         background-color: #f6f6f6;
         box-shadow: 0 -3px  5px rgba(0, 0, 0, 0.45);
-        height: 60px;
-        font-size: 2em;
         position: fixed;
         bottom: 0;
     }
@@ -201,5 +200,19 @@ nav li:hover {
 
     nav li {
         border-bottom: unset;
+    }
+}
+
+@media (max-width: 1400px) and (min-width: 650px) {
+    nav {
+        height: 30px;
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    nav {
+        height: 60px;
+        font-size: 2em;
     }
 }
