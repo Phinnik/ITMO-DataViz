@@ -17,6 +17,7 @@
 /* setup */
 html {
     scroll-behavior: smooth;
+    width: 100%;
 }
 
 body {
@@ -44,6 +45,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 0;
+    z-index: 2;
 }
 
 
@@ -52,7 +54,6 @@ body {
     background-color: #f6f6f6;
     /*width: 50%;*/
     max-width: 900px;
-    min-width: 500px;
     box-shadow: 0 0 5px;
     padding-bottom: 30px;
     flex: 2;
@@ -270,8 +271,16 @@ nav li:hover {
         display: none;
     }
 
+    .state {
+        background-color: red;
+        border: 3px solid greenyellow;
+        width: 100%;
+    }
+
     .state-container {
-        width: 90%;
+        margin: 0 auto 0 auto;
+        min-width: 200px;
+        background-color: orange;
     }
 
 
